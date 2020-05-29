@@ -8,9 +8,9 @@
     dest: "/etc/pam.d/{{ service.key }}"
     owner: root
     group: root
-    moed: '0644'
+    mode: '0644'
   vars:
-    service: service.values
+    service: service.value
   loop: '{{ pam | dict2items }}'
   loop_control:
     loop_var: service

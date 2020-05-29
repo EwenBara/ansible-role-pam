@@ -1,5 +1,5 @@
 #%PAM-1.0
 
 {% for auth in service.auth %}
-auth    {{ auth.control }}  {{ auth.module-path }}  {{ auth.module-arguments }}
+auth    {{ auth['control'] }}  {{ auth['module-path'] }}  {% if auth['module-arguments'] is defined %}{{ auth['module-arguments'] }}{% endif %}
 {% endfor %}
