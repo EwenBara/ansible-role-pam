@@ -1,5 +1,5 @@
 #%PAM-1.0
 
-{% for type in service.auth %}
-auth    {{ svc. }}
+{% for auth in service.auth %}
+auth    {{ auth.control }}  {{ auth.module-path }}  {{ auth.module-arguments }}
 {% endfor %}
