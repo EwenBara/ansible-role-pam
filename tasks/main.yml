@@ -2,6 +2,15 @@
 
 - include: map.yml
 
-- name: hello_world
-  debug:
-    msg: "Hello World !!!"
+- name: /etc/pam.d/<service>
+  template:
+    src: pam.j2
+    dest: "/etc/pam.d/{{ service.key }}"
+    owner: root
+    group: root
+    moed: '0644'
+  vars:
+    service: service.values
+  loop: '{{ pam | dict2items }}'
+  loop_control:
+    loop_var: service
